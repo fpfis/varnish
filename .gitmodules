@@ -1,0 +1,3 @@
+[submodule "nexteuropa-vcl"]
+	path = nexteuropa-vcl
+	url = https://github.com/ec-europa/nexteuropa-vcl

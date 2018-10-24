@@ -1,0 +1,9 @@
+pipeline:
+  # Build and push release
+  build-and-push-branch:
+    image: plugins/docker
+    repo: fpfis/varnish
+    tags: 6.1 
+    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
+    when:
+      event: push

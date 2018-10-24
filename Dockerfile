@@ -10,10 +10,9 @@ RUN apt update;\
     apt clean ;\
     rm -rf /var/lib/apt/lists/* ;
 
-COPY nexteuropa-vcl/*.vcl /etc/varnish/
+COPY docker-fpfis/resources/default.vcl /etc/varnish/ 
 
-#### #$%"#% Hack...
-RUN ln -s /etc/varnish/ /etc/varnish/nexteuropa
+COPY eac-eyp-vcl/default.vcl /etc/varnish/eyp.vcl
 
 COPY varnish.conf /etc/supervisor/conf.d/
 

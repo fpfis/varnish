@@ -1,18 +1,18 @@
 pipeline:
-  # Build the drupal 7 module
-        build-d7-vmod:
-                image: ubuntu:xenial
-                commands:
-                        - apt update; apt -y install curl
-                        - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | bash
-                        - apt -y install varnish-dev libtool automake python-docutils
-                        - cd libvmod-drupal7; mkdir install; ./autogen.sh; ./configure --prefix=$PWD/install; make -j; make install
-                        - find . 
-  # Build and push release
+# Build the drupal 7 module
+    build-d7-vmod:
+        image: ubuntu:xenial
+        commands:
+            - apt update; apt -y install curl
+            - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | bash
+            - apt -y install varnish-dev libtool automake python-docutils
+            - cd libvmod-drupal7; mkdir install; ./autogen.sh; ./configure --prefix=$PWD/install; make -j; make install
+            - find . 
+# Build and push release
     build-and-push-branch:
-    image: plugins/docker
-    repo: fpfis/varnish
-    tags: 4.1 
-    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
-    when:
-      event: push
+        image: plugins/docker
+        repo: fpfis/varnish
+        tags: 4.1 
+        secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
+        when:
+            event: push

@@ -10,7 +10,7 @@ RUN apt update;\
     apt clean ;\
     rm -rf /var/lib/apt/lists/* ;
 
-COPY docker-fpfis/resources/default.vcl /etc/varnish/ 
+COPY docker-fpfis/resources/default.vcl /etc/varnish/default.vcl.template 
 
 COPY eac-eyp-vcl/default.vcl /etc/varnish/eyp.vcl
 

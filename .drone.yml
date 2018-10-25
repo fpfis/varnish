@@ -8,10 +8,10 @@ pipeline:
                         - cd libvmod-drupal7; ./automake; ./configure; make -j
                         - find . 
   # Build and push release
-  build-and-push-branch:
-    image: plugins/docker
-    repo: fpfis/varnish
-    tags: 4.1 
-    secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
-    when:
-      event: push
+  #  build-and-push-branch:
+  #  image: plugins/docker
+  #  repo: fpfis/varnish
+  #  tags: 4.1 
+  #  secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
+  #  when:
+  #    event: push

@@ -1,4 +1,12 @@
 pipeline:
+  # Build the drupal 7 module
+        build-d7-vmod:
+                image: ubuntu
+                commands:
+                        - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | sudo bash
+                        - apt -y install varnish-dev libtool automake
+                        - cd libvmod-drupal7; ./automake; ./configure; make -j
+                        - find . 
   # Build and push release
   build-and-push-branch:
     image: plugins/docker

@@ -5,7 +5,7 @@ pipeline:
                 commands:
                         - apt update; apt -y install curl
                         - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | bash
-                        - apt -y install varnish-dev libtool automake
+                        - apt -y install varnish-dev libtool automake python-docutils
                         - cd libvmod-drupal7; ./autogen.sh; ./configure; make -j
                         - find . 
   # Build and push release

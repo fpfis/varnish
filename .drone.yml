@@ -3,11 +3,10 @@ pipeline:
         build-d7-vmod:
                 image: ubuntu:xenial
                 commands:
-                        - ls
                         - apt update; apt -y install curl
                         - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | bash
                         - apt -y install varnish-dev libtool automake
-                        - cd libvmod-drupal7; ./automake; ./configure; make -j
+                        - cd libvmod-drupal7; ./autogen.sh; ./configure; make -j
                         - find . 
   # Build and push release
   #  build-and-push-branch:

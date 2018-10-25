@@ -1,4 +1,3 @@
-[submodule "libvmod-drupal7"]
-	path = libvmod-drupal7
-	url = git://git.kindwolf.org/repo/libvmod-drupal7
-	branch = 4.0
+[submodule "vmod-drupal7"]
+	path = vmod-drupal7
+	url = git@github.com:fpfis/vmod-drupal7.git

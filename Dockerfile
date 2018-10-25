@@ -3,7 +3,9 @@
 from ubuntu:xenial
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV HTTP_PORT 8081
+ENV DEBIAN_FRONTEND noninteractive
+ENV VCL_PORT 8086
+ENV MAX_MEMORY 512M
 
 RUN apt update;\
     apt -y install curl;\

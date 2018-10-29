@@ -8,8 +8,7 @@ ENV MAX_MEMORY 512M
 
 RUN apt update;\
     apt -y install curl;\
-    curl -s https://packagecloud.io/install/repositories/varnishcache/varnish61/script.deb.sh | bash ;\
-    apt -y install varnish supervisor ;\
+    apt -y install varnish varnish-modules supervisor ;\
     apt clean ;\
     rm -rf /var/lib/apt/lists/* ;
 

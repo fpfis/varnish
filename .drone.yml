@@ -4,15 +4,14 @@ pipeline:
         image: ubuntu
         commands:
             - apt update; apt -y install curl
-            - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish61/script.deb.sh | bash
-            - apt -y install varnish-dev libtool automake python-docutils
+            - apt -y install libvarnishapi-dev libtool automake python-docutils
             - cd vmod-drupal7; mkdir install; ./autogen.sh; ./configure --prefix=$PWD/install; make -j; make install
             - find . 
 # Build and push release
     build-and-push-branch:
         image: plugins/docker
         repo: fpfis/varnish
-        tags: 6.1 
+        tags: 5.2 
         secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
         when:
             event: push

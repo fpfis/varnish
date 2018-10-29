@@ -18,6 +18,9 @@ RUN apt update;\
 
 COPY libvmod-drupal7/src/.libs/libvmod_drupal7.so /usr/lib/varnish/vmods/libvmod_drupal7.so
 COPY libvmod-drupal7/src/.libs/libvmod_drupal7.lai /usr/lib/varnish/vmods/libvmod_drupal7.la
+COPY varnish-modules/src/.libs/*.so /usr/lib/varnish/vmods/
+COPY varnish-modules/src/.libs/*.la /usr/lib/varnish/vmods/
+RUN find /usr/lib/varnish/vmods/ -name '*la' -exec sed -i 's/installed=.*/installed=yes/g' {} \;'
 RUN ldconfig -n /usr/lib/varnish/vmods 
 
 #COPY eac-eyp-vcl/default.vcl /etc/varnish/eyp.vcl

@@ -1,6 +1,6 @@
 pipeline:
-# Build the drupal 7 module
-    build-d7-vmod:
+# Build the drupal 7 module and others
+    build-vmods:
         image: ubuntu:xenial
         commands:
             - apt update; apt -y install curl

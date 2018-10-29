@@ -14,9 +14,9 @@ RUN apt update;\
 
 #COPY docker-fpfis/resources/default.vcl /etc/varnish/default.vcl.template 
 
-COPY libvmod-drupal7/src/.libs/libvmod_drupal7.so /usr/lib/varnish/vmods/libvmod_drupal7.so
-COPY libvmod-drupal7/src/.libs/libvmod_drupal7.lai /usr/lib/varnish/vmods/libvmod_drupal7.la
-RUN ldconfig -n /usr/lib/varnish/vmods 
+COPY libvmod-drupal7/src/.libs/libvmod_drupal7.so /usr/lib/x86_64-linux-gnu/varnish/vmods/libvmod_drupal7.so
+COPY libvmod-drupal7/src/.libs/libvmod_drupal7.lai /usr/lib/x86_64-linux-gnu/varnish/vmods/libvmod_drupal7.la
+RUN ldconfig -n /usr/lib/x86_64-linux-gnu/varnish/vmods/ 
 
 #COPY eac-eyp-vcl/default.vcl /etc/varnish/eyp.vcl
 

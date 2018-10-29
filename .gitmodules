@@ -1,3 +1,6 @@
 [submodule "vmod-drupal7"]
 	path = vmod-drupal7
 	url = https://github.com/fpfis/vmod-drupal7.git
+[submodule "varnish-modules"]
+	path = varnish-modules
+	url = https://github.com/varnish/varnish-modules.git

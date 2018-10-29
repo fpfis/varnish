@@ -4,7 +4,7 @@ pipeline:
         image: ubuntu
         commands:
             - apt update; apt -y install curl
-            - apt -y install libvarnishapi-dev libtool automake python-docutils
+            - apt -y install libvarnishapi-dev libvarnishapi1 varnish libtool automake python-docutils
             - cd vmod-drupal7; mkdir install; ./autogen.sh; ./configure --prefix=$PWD/install; make -j; make install
             - find . 
 # Build and push release

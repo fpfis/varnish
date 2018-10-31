@@ -1,7 +1,0 @@
-[submodule "libvmod-drupal7"]
-	path = libvmod-drupal7
-	url = git://git.kindwolf.org/repo/libvmod-drupal7
-	branch = 4.0
-[submodule "varnish-modules"]
-	path = varnish-modules
-	url = https://github.com/varnish/varnish-modules.git

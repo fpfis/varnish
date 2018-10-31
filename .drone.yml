@@ -1,19 +1,16 @@
+matrix:
+    VARNISH_VERSION:
+    - 4.1
+    - 6.0
 pipeline:
-# Build the drupal 7 module and others
-    build-vmods:
-        image: ubuntu:xenial
-        commands:
-            - apt update; apt -y install curl
-            - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish41/script.deb.sh | bash
-            - apt -y install varnish-dev libtool automake python-docutils
-            - cd libvmod-drupal7; mkdir install; ./autogen.sh; ./configure --prefix=$PWD/install; make -j; make install; cd ..
-            - cd varnish-modules; ./bootstrap; ./configure; make -j
-            - find . 
 # Build and push release
     build-and-push-branch:
         image: plugins/docker
         repo: fpfis/varnish
-        tags: 4.1 
+        tags: ${VARNISH_VERSION}
+        args:
+            build_args:
+                - VARNISH_VERSION=${VARNISH_VERSION}
         secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
         when:
             event: push

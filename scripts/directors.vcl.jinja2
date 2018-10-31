@@ -1,0 +1,42 @@
+# Sometimes there will be dragons when using a scripting language as config
+# Here's one of them.
+
+import directors;
+
+# Backend definition :
+{% for site_name, site in varnish.sites.items() -%}
+  {% for node in site.nodes %}
+backend {{ site_name|replace("-","") }}_{{ node.host|replace(".","")|replace("-","") + node.port|string }} {
+    .host = "{{ node.host }}";
+    .port = "{{ node.port }}";
+}
+  {% endfor %} 
+{% endfor -%}
+
+# Directors definition
+sub vcl_init {
+{%- for site_name, site in varnish.sites.items() %}
+  new {{ site_name|replace("-","") }}dir  = directors.random();
+  {% for node in site.nodes %}
+  {{ site_name|replace("-","") }}dir.add_backend({{ site_name|replace("-","") }}_{{ node.host|replace(".","")|replace("-","") + node.port|string }}, {{ node.weight|default("100") }});
+  {% endfor %}
+{% endfor -%}
+}
+
+# Routing and tagging
+sub vcl_recv {
+{% for site_name, site in varnish.sites.items() -%}
+  if ( req.url ~ "^{{ site.path|replace("/","/+") }}") {
+    {% if site.base64auth %}
+    if (! req.http.Authorization ~ "Basic {{ site.base64auth }}") {
+        return(synth(401, "{{ site_name }} access restricted"));
+    }
+    unset req.http.Authorization;
+    {% endif %}
+    set req.http.X-FPFIS-Application-Base-Path = "{{ site.path }}";
+    set req.http.X-Application-Tag = "{{ site_name }}";
+    set req.backend_hint = {{ site_name|replace("-","") }}dir.backend();
+    std.log("Request assigned to {{ site_name|replace("-","") }}dir");
+  }{% if not loop.last %} else {% endif -%}
+{% endfor %}
+}

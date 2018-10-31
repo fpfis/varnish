@@ -10,9 +10,8 @@ pipeline:
         image: plugins/docker
         repo: fpfis/varnish
         tags: ${VARNISH_VERSION}
-        args:
-            build_args:
-                - VARNISH_VERSION=${VARNISH_VERSION}
+        build_args:
+            - VARNISH_VERSION=${VARNISH_VERSION}
         secrets: [ DOCKER_USERNAME, DOCKER_PASSWORD ]
         when:
             event: push

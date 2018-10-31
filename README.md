@@ -1,0 +1,2 @@
+# FPFIS Varnish docker image
+

@@ -8,8 +8,8 @@ apt-get -y install curl
 curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VARNISH_VERSION/./}/script.deb.sh | /bin/bash
 
 # Install varnish & build deps
-apt-get -y install varnish varnish-dev  python-pip libtool automake python-docutils
-pip install --no-cache-dir pyyaml jinja2-cli
+apt-get -y install varnish varnish-dev python-yaml python-pip libtool automake python-docutils
+pip install --no-cache-dir jinja2-cli
 
 mkdir -p /vmod/d7
 curl -L https://github.com/fpfis/vmod-drupal7/archive/${VARNISH_VERSION}.tar.gz | tar --strip=1 -xzvC /vmod/d7
@@ -34,6 +34,8 @@ make -j$(nproc)
 make install
 popd
 rm -Rf /vmod/vmods
+
+ldconfig -n /usr/lib/varnish/vmods
 
 # Clean
 apt-get autoremove -y --purge curl python-pip varnish-dev libtool automake python-docutils

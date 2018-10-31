@@ -7,4 +7,4 @@ jinja2 /scripts/directors.vcl.jinja2 ${YAML_CONF} > /tmp/directors.vcl
 
 cat  /tmp/directors.vcl
 
-/usr/sbin/varnishd -f /etc/varnish/default.vcl -a 0.0.0.0:${HTTP_PORT},HTTP/1 -s malloc,${MAX_MEMORY} -F $@
+/usr/sbin/varnishd -f /etc/varnish/default.vcl -a 0.0.0.0:${HTTP_PORT} -s malloc,${MAX_MEMORY} -F $@

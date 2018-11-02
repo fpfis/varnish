@@ -1,9 +1,12 @@
+## FPFIS Varnish image [![Build Status](https://drone.fpfis.eu/api/badges/fpfis/varnish/status.svg?branch=master)](https://drone.fpfis.eu/fpfis/varnish)
 
-## Image
 
 Image is named `fpfis/varnish` and are based on Ubuntu.
 
 ## Supported version
+
+ - 4.1 [![Docker Image](https://images.microbadger.com/badges/image/fpfis/varnish:4.1.svg)](https://microbadger.com/images/fpfis/varnish) 
+ - 6 [![Docker Image](https://images.microbadger.com/badges/image/fpfis/varnish:6.svg)](https://microbadger.com/images/fpfis/varnish) 
 
 ## VMOD included
 
@@ -93,5 +96,3 @@ docker run -p 8086:8086 -ti --rm -e YAML_CONF=/yaml.conf -v $(pwd)/config.yaml:/
 
 ___
 
-[![Build Status](https://drone.fpfis.eu/api/badges/fpfis/varnish/status.svg?branch=master)](https://drone.fpfis.eu/fpfis/varnish)
-[![Docker Image](https://images.microbadger.com/badges/image/fpfis/varnish:4.1.svg)](https://microbadger.com/images/fpfis/varnish) 

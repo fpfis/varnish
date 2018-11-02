@@ -5,9 +5,6 @@ Image is named `fpfis/varnish` and are based on Ubuntu.
 
 ## Supported version
 
- - 4.1
- - 6.0
-
 ## VMOD included
 
 The following vmods have been included :
@@ -97,4 +94,4 @@ docker run -p 8086:8086 -ti --rm -e YAML_CONF=/yaml.conf -v $(pwd)/config.yaml:/
 ___
 
 [![Build Status](https://drone.fpfis.eu/api/badges/fpfis/varnish/status.svg?branch=master)](https://drone.fpfis.eu/fpfis/varnish)
-[![Docker Image](https://images.microbadge
+[![Docker Image](https://images.microbadger.com/badges/image/fpfis/varnish.svg)](https://microbadger.com/images/fpfis/varnish) 

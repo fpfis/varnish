@@ -20,9 +20,9 @@ curl -L https://github.com/varnish/varnish-modules/archive/0.15.0.tar.gz | tar -
 # Build vmod d7
 pushd /vmod/d7
 ./autogen.sh
-./configure --install-dir=/usr/lib/varnish/vmods
+./configure
 make -j$(nproc)
-make install
+vmoddir=/usr/lib/varnish/vmods make install
 popd
 rm -Rf /vmod/d7
 

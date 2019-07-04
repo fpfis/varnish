@@ -22,8 +22,8 @@ pushd /vmod/d7
 ./autogen.sh
 ./configure
 make -j$(nproc)
-/usr/bin/install -c .libs/libvmod_drupal7.so /usr/lib/varnish/vmods/libvmod_drupal7.so
-/usr/bin/install -c .libs/libvmod_drupal7.lai /usr/lib/varnish/vmods/libvmod_drupal7.la
+/usr/bin/install -c src/.libs/libvmod_drupal7.so /usr/lib/varnish/vmods/libvmod_drupal7.so
+/usr/bin/install -c src/.libs/libvmod_drupal7.lai /usr/lib/varnish/vmods/libvmod_drupal7.la
 #vmoddir=/usr/lib/varnish/vmods make install
 popd
 rm -Rf /vmod/d7

@@ -22,7 +22,7 @@ pushd /vmod/d7
 ./autogen.sh
 ./configure
 make -j$(nproc)
-make install
+make install DESTDIR=/usr/lib/varnish/vmods
 popd
 rm -Rf /vmod/d7
 
@@ -31,7 +31,7 @@ pushd /vmod/vmods
 ./bootstrap
 ./configure
 make -j$(nproc)
-make install
+make install DESTDIR=/usr/lib/varnish/vmods
 popd
 rm -Rf /vmod/vmods
 

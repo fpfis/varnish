@@ -34,6 +34,7 @@ sub vcl_recv {
     unset req.http.Authorization;
     {% endif %}
     set req.http.X-FPFIS-Application-Base-Path = "{{ site.path }}";
+    set req.http.X-FPFIS-Application-Path = regsub(req.url, "^({{ site.path }})/*(.*)$", "\2");
     set req.http.X-Application-Tag = "{{ site_name }}";
     set req.backend_hint = {{ site_name|replace("-","") }}dir.backend();
     std.log("Request assigned to {{ site_name|replace("-","") }}dir");

@@ -16,7 +16,7 @@ curl -L https://github.com/fpfis/vmod-drupal7/archive/${VARNISH_VERSION}.tar.gz 
 mkdir -p /vmod/vmods
 curl -L https://github.com/varnish/varnish-modules/archive/0.15.0.tar.gz | tar --strip=1 -xzvC /vmod/vmods
 mkdir -p /vmod/dynamics
-curl -L https://github.com/nigoroll/libvmod-dynamic/archive/refs/heads/6.0.tar.gz  | tar --strip=1 -xzvC vmod/dynamics
+curl -L https://github.com/nigoroll/libvmod-dynamic/archive/refs/heads/6.0.tar.gz  | tar --strip=1 -xzvC vmod/dynamics && rm -v vmod/dynamics/src/tests/resolver/cfg.vtc vmod/dynamics/src/tests/service/basic.vtc
 
 # Build vmod d7
 pushd /vmod/d7
@@ -43,7 +43,7 @@ ldconfig -n /usr/lib/varnish/vmods
 pushd /vmod/dynamics
 ./autogen.sh
 ./configure  
-echo "127.0.0.1 www.localhost img.localhost" >> /etc/hosts && rm /vmod/dynamics/src/tests/resolver/cfg.vtc /vmod/dynamics/src/tests/service/basic.vtc
+echo "127.0.0.1 www.localhost img.localhost" >> /etc/hosts
 make check
 make install
 popd

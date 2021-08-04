@@ -17,7 +17,7 @@ mkdir -p /vmod/vmods
 curl -L https://github.com/varnish/varnish-modules/archive/0.15.0.tar.gz | tar --strip=1 -xzvC /vmod/vmods
 mkdir -p /vmod/dynamics
 
-curl -L https://github.com/nigoroll/libvmod-dynamic/archive/v2.4.0.tar.gz  | tar --strip=1 -xzvC /vmod/dynamics
+curl -L https://github.com/nigoroll/libvmod-dynamic/archive/refs/heads/6.0.tar.gz  | tar --strip=1 -xzvC vmod/dynamics
 
 # Build vmod d7
 pushd /vmod/d7

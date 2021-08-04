@@ -4,11 +4,11 @@ set -x
 
 # Enable varnish repo
 apt-get update
-apt-get install curl -q
+apt-get install -qq curl
 curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VARNISH_VERSION/./}lts/script.deb.sh | /bin/bash
 
 # Install varnish & build deps
-apt-get -q install varnish varnish-dev python-yaml python-pip libtool automake python-docutils libgetdns1 libgetdns-dev
+apt-get install -qq varnish varnish-dev python-yaml python-pip libtool automake python-docutils libgetdns1 libgetdns-dev
 pip install --no-cache-dir jinja2-cli
 
 mkdir -p /vmod/d7
@@ -41,20 +41,13 @@ rm -Rf /vmod/vmods
 
 ldconfig -n /usr/lib/varnish/vmods
 
-# Build vmod dynamics only if varnish 6
-if [ $VARNISH_VERSION = "6.0" ]; then
-  pushd /vmod/dynamics
-  
-  ./autogen.sh
-  ./configure  
-
-  echo "127.0.0.1 www.localhost img.localhost" >> /etc/hosts
-
-  make check
-  make install
-
-  popd
-fi
+pushd /vmod/dynamics
+./autogen.sh
+./configure  
+echo "127.0.0.1 www.localhost img.localhost" >> /etc/hosts
+make check
+make install
+popd
 
 # Clean
 apt-get autoremove -y --purge curl python-pip varnish-dev libtool automake python-docutils libgetdns-dev

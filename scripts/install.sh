@@ -4,7 +4,7 @@ set -x
 
 # Enable varnish repo
 apt-get update
-apt-get -q install curl
+apt-get install curl -q
 curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VARNISH_VERSION/./}lts/script.deb.sh | /bin/bash
 
 # Install varnish & build deps

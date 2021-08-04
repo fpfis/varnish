@@ -5,7 +5,6 @@ Image is named `fpfis/varnish` and are based on Ubuntu.
 
 ## Supported version
 
- - 4.1 [![Docker Image](https://images.microbadger.com/badges/image/fpfis/varnish:4.1.svg)](https://microbadger.com/images/fpfis/varnish) 
  - 6 [![Docker Image](https://images.microbadger.com/badges/image/fpfis/varnish:6.svg)](https://microbadger.com/images/fpfis/varnish) 
 
 ## VMOD included

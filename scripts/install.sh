@@ -5,7 +5,7 @@ set -x
 # Enable varnish repo
 apt-get update
 apt-get -y install curl
-curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VARNISH_VERSION/./}/script.deb.sh | /bin/bash
+curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VARNISH_VERSION/./}lts/script.deb.sh | /bin/bash
 
 # Install varnish & build deps
 apt-get -y install varnish varnish-dev python-yaml python-pip libtool automake python-docutils libgetdns1 libgetdns-dev

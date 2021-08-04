@@ -1,8 +1,6 @@
 matrix:
     VARNISH_VERSION:
-    - 4.1
     - 6.0
-    - 6.3
 pipeline:
 # Build and push release
     build-and-push-branch:

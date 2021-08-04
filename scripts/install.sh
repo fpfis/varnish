@@ -4,11 +4,11 @@ set -x
 
 # Enable varnish repo
 apt-get update
-apt-get -y install curl
+apt-get -q install curl
 curl -s https://packagecloud.io/install/repositories/varnishcache/varnish${VARNISH_VERSION/./}lts/script.deb.sh | /bin/bash
 
 # Install varnish & build deps
-apt-get -y install varnish varnish-dev python-yaml python-pip libtool automake python-docutils libgetdns1 libgetdns-dev
+apt-get -q install varnish varnish-dev python-yaml python-pip libtool automake python-docutils libgetdns1 libgetdns-dev
 pip install --no-cache-dir jinja2-cli
 
 mkdir -p /vmod/d7
@@ -17,7 +17,7 @@ mkdir -p /vmod/vmods
 curl -L https://github.com/varnish/varnish-modules/archive/0.15.0.tar.gz | tar --strip=1 -xzvC /vmod/vmods
 mkdir -p /vmod/dynamics
 
-curl -L https://github.com/nigoroll/libvmod-dynamic/archive/v2.4.tar.gz  | tar --strip=1 -xzvC /vmod/dynamics
+curl -L https://github.com/nigoroll/libvmod-dynamic/archive/v2.4.0.tar.gz  | tar --strip=1 -xzvC /vmod/dynamics
 
 # Build vmod d7
 pushd /vmod/d7
